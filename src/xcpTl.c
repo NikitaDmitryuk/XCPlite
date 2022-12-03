@@ -521,6 +521,7 @@ BOOL XcpTlHandleCommands() {
 
         // Receive TCP transport layer message
         n = socketRecv(gXcpTl.Sock, (uint8_t*)&msgBuf, (uint16_t)XCPTL_TRANSPORT_LAYER_HEADER_SIZE, TRUE); // header, recv blocking
+        printf("%d\n", n);
         if (n == XCPTL_TRANSPORT_LAYER_HEADER_SIZE) {
             n = socketRecv(gXcpTl.Sock, (uint8_t*)&msgBuf.packet, msgBuf.dlc, TRUE); // packet, recv blocking
             if (n > 0) {
